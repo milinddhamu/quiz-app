@@ -16,7 +16,7 @@ const primaryStyles = `
 `;
 
 const secondaryStyles = `
-  background-color: #7828C8;
+  background-color: #FF3B3F;
   color: white;
 `;
 
@@ -30,8 +30,8 @@ const warningStyles = `
 `;
 
 const defaultStyles = `
-  background-color: #71717A;
-  color: black;
+  background-color: #ffffff;
+  color: #FF3B3F;
 `;
 
 const getVariantStyles = (color) => {
@@ -49,14 +49,14 @@ const getVariantStyles = (color) => {
   }
 };
 
-const shadowColor = (bool) => bool && `box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;`
+const shadowColor = (bool) => bool && `box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;`
 
 const shadowColorActive = `box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;`
 
 const borderRadius = (radius) => {
   switch(radius){
     case "full" :
-      return `1.5em`
+      return `9999px`
     case "lg" :
       return `0.8em`
     case "md" :
@@ -74,19 +74,22 @@ const borderRadius = (radius) => {
 
 const Button = styled.button`
   ${a => (a.color) ? getVariantStyles(a.color) : defaultStyles}
-  border-radius : ${a => a.radius ? borderRadius(a.radius) : `0.6em`};
+  border-radius : ${a => a.$radius ? borderRadius(a.$radius) : `0.6em`};
   border-width: 0;
+  font-family:'Fira Sans' , sans-serif;
   outline:none;
+  ${a=> a.$square && `aspect-ratio:1/1;`}
   max-width: fit-content;
-  padding:1em 1.6em;
-  font-size:${a => a.size ?? 14}px;
+  padding:${a=> (a.$paddingX && a.$paddingY) ? `${a.$paddingY} ${a.$paddingX}` : `1rem 1.6rem` };
+  font-size:${a => a.$size ?? 14}px;
   transition-property: scale,box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
   cursor:pointer;
   transition-timing-function: linear;
-  ${a => shadowColor(a.shadow)}
-
+  ${a => shadowColor(a.$shadow)}
+  ${a=> a.$extraBold && `font-weight:900;`}
+  ${a=> a.$Bold && `font-weight:600;`}
   &:hover {
   ${a=> (a.color) ? getVariantStyles(a.color) : defaultStyles}
   opacity:0.8;

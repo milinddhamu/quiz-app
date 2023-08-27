@@ -5,8 +5,12 @@
   --secondary-color:#1c0166;
   --tertiary-color:#6b009c;
   --quaternary-color:#ce004f; 
-  ---color:#ffaacc; 
-  background-color: var(--primary-color);
+  --quinary-color:#ffaacc; 
+  --senary-color:#ac99ff; 
   font-family: 'Fira Sans', sans-serif;
+  body {
+    margin:0;
+    padding:0;
+  }
 }
 

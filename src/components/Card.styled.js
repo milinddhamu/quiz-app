@@ -43,14 +43,13 @@ const applyAlignmentAndJustification = (align, justify) => {
 
 export const Card = styled.div`
   display:flex;
-  width:80%;
-  min-height:70vh;
-  margin:0 5%;
-  border-radius:1.2em;
+  width:90%;
+  height:100%;
+  border-radius:3em;
   flex-direction:column;
-  border:2px solid #3F007150;
-  padding:1.5rem;
-  background-color:#15005070;
+  padding:2em;
+  margin:1rem;
+  background-color:#ffffff;
   gap:${a=>a.$gap || 1}em;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -61,8 +60,9 @@ export const Card = styled.div`
 export const CardContent = styled.div`
   flex: 1;
   display:flex;
+  padding:0.2rem 0rem;
   flex-direction:column;
-  gap:${a=>a.$gap || 1}em;
+  gap:${a=>a.$gap || 0.4}em;
 
   
 `

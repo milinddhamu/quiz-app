@@ -11,7 +11,8 @@ export const H2 = styled.text`
   color: #FB2576
 `
 export const H3 = styled.text`
-  color: #FB257680;
+  color: #FB2576;
+  box-shadow: 
   font-family: 'Fira Sans', sans-serif;
   font-weight:600;
   width:auto;

@@ -46,6 +46,9 @@ export const Row = styled.div`
   width:100%;
   flex-direction:row;
   ${props => applyAlignmentAndJustification(props.$align, props.$justify)}
+  ${props=> props.$Background && `background-color:#11111140;
+    padding:1rem;
+  `}
 `
 export const Col = styled.div`
   display:flex;
