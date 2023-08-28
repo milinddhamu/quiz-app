@@ -14,15 +14,20 @@ import { Footer } from "./Footer.styled";
 const Quiz = () => {
     const questions = useRecoilValue(quizState);
     const [page , setPage] = useState(0);
+    const [resetCounter, setResetCounter] = useState(0);
     const quiz = questions[page]
     const nextQues = () => {
+      handleReset();
       setPage(prevIndex => (prevIndex + 1) % questions.length);
-    }
+    };
+    const handleReset = () => {
+    setResetCounter(resetCounter + 1);
+  };
   return (
     <>
-      <Main $GradientBG>
+      <Main>
         <Section $align="center">
-        {quiz && <QuizCard quiz={quiz} index={page} />}
+        {quiz && <QuizCard quiz={quiz} index={page} resetState={resetCounter} />}
         <Footer>
         <Row $justify="end">
         <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={nextQues}>Submit & Next</Button>

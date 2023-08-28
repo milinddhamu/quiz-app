@@ -8,8 +8,8 @@ import {Row, Col} from "@/components/Row.styled";
 import RadioInput from "./RadioInput.styled";
 import { Footer } from './Footer.styled';
 import { RowButton } from "./RowButton.styled";
-import { useState } from 'react';
-const QuizCard = ({quiz , index}) => {
+import { useState,useEffect } from 'react';
+const QuizCard = ({quiz , index ,resetState}) => {
   const answers = quiz?.answers;
   const [checkedStates, setCheckedStates] = useState({});
   const handleClick = (key) => {
@@ -27,6 +27,10 @@ const QuizCard = ({quiz , index}) => {
     }
     return `${words[0], words[1]}`;
   };
+
+  useEffect(()=>{
+    setCheckedStates({});
+  },[resetState])
 
 
   return (

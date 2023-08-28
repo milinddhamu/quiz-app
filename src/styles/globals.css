@@ -8,6 +8,8 @@
   --quinary-color:#ffaacc; 
   --senary-color:#ac99ff; 
   font-family: 'Fira Sans', sans-serif;
+  background: linear-gradient(to top, #ffffff, var(--senary-color));
+    background-attachment: fixed;
   body {
     margin:0;
     padding:0;

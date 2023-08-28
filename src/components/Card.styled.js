@@ -43,12 +43,12 @@ const applyAlignmentAndJustification = (align, justify) => {
 
 export const Card = styled.div`
   display:flex;
-  width:90%;
+  width:80%;
   height:min(100%,750px);
   border-radius:2em;
   flex-direction:column;
   padding:2em;
-  margin:4rem 1rem 1rem 1rem;
+  margin:4rem 0rem 0rem 0rem;
   background-color:#ffffff;
   gap:${a=>a.$gap || 1}em;
   transition-property: all;

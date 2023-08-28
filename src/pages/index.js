@@ -38,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <Main $GradientMain>
+    <Main>
       <Section $gap={2} $justify="between" $align="center" $Relative >
           <Image 
           src={BrandLogo}

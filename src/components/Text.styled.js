@@ -42,5 +42,4 @@ export const P = styled.label`
   text-align:justify;
   padding:0.1rem 1rem 0 1rem;
   font-size:16px;
-
 `
