@@ -92,7 +92,6 @@ const Button = styled.button`
   ${a=> a.$Bold && `font-weight:600;`}
   &:hover {
   ${a=> (a.color) ? getVariantStyles(a.color) : defaultStyles}
-  opacity:0.8;
   }
   &:focus { 
     ${a => a.shadow && shadowColorActive}

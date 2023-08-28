@@ -20,7 +20,7 @@ export const H3 = styled.text`
   text-align:justify;
 `
 export const H4 = styled.text`
-  color: #FB2576;
+  color: #343434;
   font-family: 'Fira Sans', sans-serif;
   font-weight:600;
   width:auto;
@@ -38,9 +38,9 @@ export const H5 = styled.text`
 `
 
 export const P = styled.label`
-  color: #fee2ed;
+  color: #343434;
   text-align:justify;
-  padding:0.1rem 0 0 1rem;
+  padding:0.1rem 1rem 0 1rem;
   font-size:16px;
 
 `
