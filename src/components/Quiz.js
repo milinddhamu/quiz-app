@@ -11,29 +11,36 @@ import {Row, Col} from "@/components/Row.styled";
 import RadioInput from "./RadioInput.styled";
 import QuizCard from "./QuizCard";
 import { Footer } from "./Footer.styled";
+
 const Quiz = () => {
+    const router = useRouter()
     const questions = useRecoilValue(quizState);
     const [page , setPage] = useState(0);
-    const [resetCounter, setResetCounter] = useState(0);
-    const quiz = questions[page]
+    const [results , setResults] = useState(false);
+    const [userAnswers, setUserAnswers] = useState([{
+      "key" : "",
+      "ans":[],
+    }]);
+    const quiz = questions[page];
     const nextQues = () => {
-      handleReset();
-      setPage(prevIndex => (prevIndex + 1) % questions.length);
+      if (page < questions.length - 1) {
+        setPage(prevIndex => prevIndex + 1);
+      } else {
+        router.push("/");
+      }
     };
-    const handleReset = () => {
-    setResetCounter(resetCounter + 1);
-  };
+
+    const handleSubmit = (key,ans) => {
+      setUserAnswers((prev)=>[
+        ...prev,
+        { "key" : key,
+          "ans": [...ans] }
+      ]);
+    };
+    console.log(userAnswers, questions)
   return (
     <>
-      <Main>
-        <Section $align="center">
-        {quiz && <QuizCard quiz={quiz} index={page} resetState={resetCounter} />}
-        <Footer>
-        <Row $justify="end">
-        <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={nextQues}>Submit & Next</Button>
-        </Row>
-        </Footer>
-        </Section>
+      <Main>{quiz && <QuizCard quiz={quiz} page={page} submit={handleSubmit} next={nextQues} />}       
         </Main>
     </>
   );

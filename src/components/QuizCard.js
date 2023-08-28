@@ -9,8 +9,9 @@ import RadioInput from "./RadioInput.styled";
 import { Footer } from './Footer.styled';
 import { RowButton } from "./RowButton.styled";
 import { useState,useEffect } from 'react';
-const QuizCard = ({quiz , index ,resetState}) => {
+const QuizCard = ({quiz , page ,submit , next}) => {
   const answers = quiz?.answers;
+  const key = quiz?.id;
   const [checkedStates, setCheckedStates] = useState({});
   const handleClick = (key) => {
     setCheckedStates((prevCheckedStates) => ({
@@ -18,7 +19,7 @@ const QuizCard = ({quiz , index ,resetState}) => {
       [key]: !prevCheckedStates[key]
     }));
   };
-
+  const ans = Object.keys(checkedStates).filter(key => checkedStates[key] === true);
   function splitStringIntoTwoWords(inputString) {
     if(!inputString) return;
     const words = inputString.trim().split(/\s+/);
@@ -28,21 +29,24 @@ const QuizCard = ({quiz , index ,resetState}) => {
     return `${words[0], words[1]}`;
   };
 
-  useEffect(()=>{
+  const handleSubmitNext = () => {
+    submit(key,ans);
+    next();
     setCheckedStates({});
-  },[resetState])
+  }
 
 
   return (
     <>
+    <Section $align="center">
     <Card $gap={2}>
-                <H4 key={quiz.id}>{index + 1}.&nbsp;{quiz.question || "some question data here..."}</H4>
+                <H4 key={quiz.id}>{page + 1}.&nbsp;{quiz.question || "some question data here..."}</H4>
     <CardContent>
                 {answers && Object.keys(answers).map((key,index) =>
                 { if(answers[key] === null) return;
                   return(
                     <>
-                    {key && <RowButton $backgroundStyle={!checkedStates[key] ? `background1` : `background2`} $justify="start" $align="start" key={key} onClick={() => handleClick(key)}>
+                    {key && <RowButton $backgroundStyle={!checkedStates[key] ? `background1` : `background2`} $justify="start" $align="start" key={index} onClick={() => handleClick(key)}>
                     <RadioInput type="checkbox" id={key} name="options" value={key}  
                       checked={checkedStates[key] || false}
                       onChange={()=>{}}
@@ -55,6 +59,12 @@ const QuizCard = ({quiz , index ,resetState}) => {
                   )})}
               </CardContent>
       </Card>
+      <Footer>
+        <Row $justify="end">
+        <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={handleSubmitNext}>Submit & Next</Button>
+        </Row>
+        </Footer>
+        </Section>
     </>
   );
 }
