@@ -39,7 +39,6 @@ const applyAlignmentAndJustification = (align, justify) => {
     default:
       break;
   }
-
   return css;
 };
 

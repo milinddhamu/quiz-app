@@ -43,12 +43,13 @@ export default function Home() {
           <Image 
           src={BrandLogo}
           alt="logo" 
-          css={{maxWidth:"40%",height:"auto",padding:"1rem 1rem 0 0"}}
+          css={{maxWidth:"30%",height:"auto",padding:"1rem 1rem 0 0"}}
           />
-          <Center><Button $shadow $extraBold $paddingX="4rem" $paddingY="4rem" $square $size={46} $radius="full" > Quiz</Button></Center>
+          <Center><Button style={{fontFamily:"Poppins, sans-serif"}} $Disabled={true} $shadow $extraBold $paddingX="4rem" $paddingY="4rem" $square $size={46} $radius="full" > Quiz</Button></Center>
           <Footer>
       {!loading ? <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={fetchData}> Quiz</Button> :
-      <H4>Loading...</H4>}
+      <Button $paddingX="6rem" $Bold $Disabled={true} $paddingY="1.5rem" $size={18} $radius="full" color="disabled" >Loading...</Button>
+      }
       </Footer>
       </Section>
     </Main>

@@ -13,7 +13,7 @@ transition: 0.20s;
 border:2px solid gray;
 text-align: center;
 font-size:0.6rem;
-font-family: 'Fira Sans', sans-serif;
+font-family: 'Nunito', sans-serif;
 font-weight: 900;
 color: white;
 border-radius: 9999px;
@@ -32,6 +32,21 @@ content: "✔";
 cursor: pointer; 
 opacity: 0.8;
 }
+
+${props=> props.$correct && `
+  &:checked:before {
+    content:"";
+  }    
+  `}
+  ${props=> props.$incorrect && `
+  &:checked {
+    background-color: #FF3B3F;
+    border:2px solid #FF3B3F;
+    }
+  &:checked:before {
+    content:"";
+  }    
+  `}
 `
 
-export default RadioInput
+export default RadioInput;

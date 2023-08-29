@@ -16,7 +16,7 @@ const primaryStyles = `
 `;
 
 const secondaryStyles = `
-  background-color: #FF3B3F;
+  background-color: #FF3B3C;
   color: white;
 `;
 
@@ -26,6 +26,10 @@ const errorStyles = `
 `;
 const warningStyles = `
   background-color: #F5A524;
+  color: white;
+`;
+const disabledStyles = `
+  background-color: #52525b;
   color: white;
 `;
 
@@ -44,6 +48,8 @@ const getVariantStyles = (color) => {
       return errorStyles;
     case 'warning':
       return warningStyles;
+    case 'disabled':
+      return disabledStyles;
     default:
       return defaultStyles;
   }
@@ -76,7 +82,7 @@ const Button = styled.button`
   ${a => (a.color) ? getVariantStyles(a.color) : defaultStyles}
   border-radius : ${a => a.$radius ? borderRadius(a.$radius) : `0.6em`};
   border-width: 0;
-  font-family:'Fira Sans' , sans-serif;
+  font-family: 'Nunito', sans-serif;
   outline:none;
   ${a=> a.$square && `aspect-ratio:1/1;`}
   max-width: fit-content;
@@ -88,8 +94,8 @@ const Button = styled.button`
   cursor:pointer;
   transition-timing-function: linear;
   ${a => shadowColor(a.$shadow)}
-  ${a=> a.$extraBold && `font-weight:900;`}
-  ${a=> a.$Bold && `font-weight:600;`}
+  ${a=> a.$extraBold && `font-weight: 800;`}
+  ${a=> a.$Bold && `font-weight: 800;`}
   &:hover {
   ${a=> (a.color) ? getVariantStyles(a.color) : defaultStyles}
   }
@@ -101,6 +107,12 @@ const Button = styled.button`
     ${a=>(a.color) ? getVariantStyles(a.color) : defaultStyles}
     box-shadow:none;
   }
+
+  ${props => props.$Disabled && `
+    pointer-events: none;
+    cursor: not-allowed;
+  `}
+  
 
 `
 
