@@ -1,5 +1,4 @@
 import { Section } from '@/components/Section.styled';
-import { useRouter } from "next/router";
 import { H1,P,H2,H3,H5 } from "@/components/Text.styled";
 import {Card, CardContent} from "@/components/Card.styled";
 import {Row, Col} from "@/components/Row.styled";
@@ -9,8 +8,7 @@ import { RowButton } from "./RowButton.styled";
 import { useState,useEffect } from 'react';
 import Button from '@/components/Button.styled';
 
-const Results = ({results}) => {
-  const router = useRouter();
+const Results = ({results,handle}) => {
   return (
     <>
     <Section $align="center">
@@ -47,7 +45,7 @@ const Results = ({results}) => {
       </Card>
       <Footer>
         <Row $justify="end">
-        <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={()=> router.push("/")}>Start again</Button>
+        <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={()=> handle()}>Start again</Button>
         </Row>
         </Footer>
         </Section>

@@ -4,7 +4,6 @@ import { useState,useEffect } from "react";
 import Button from '@/components/Button.styled';
 import { Main } from '@/components/Main.styled';
 import { Section } from '@/components/Section.styled';
-import { useRouter } from "next/router";
 import { H1,P,H4,H3,H5 } from "@/components/Text.styled";
 import {Card, CardContent} from "@/components/Card.styled";
 import {Row, Col} from "@/components/Row.styled";
@@ -13,8 +12,7 @@ import QuizCard from "./QuizCard";
 import { Footer } from "./Footer.styled";
 import Results from "./Results";
 
-const Quiz = () => {
-    const router = useRouter();
+const Quiz = ({handle}) => {
     const questions = useRecoilValue(quizState);
     const [page , setPage] = useState(0);
     const [resultState , setResultState] = useState(false)
@@ -52,7 +50,7 @@ const Quiz = () => {
         const question = questions.find(q => q.id === key);
     
         if (!question) {
-          return null; // Question not found
+          return null;
         }
     
         const isCorrect = question.correct_answer === ans;
@@ -76,12 +74,10 @@ const Quiz = () => {
     
   return (
     <>
-      <Main>
         {!resultState ?
         <QuizCard quiz={quiz} page={page} submit={handleSubmit} next={nextQues} result={result} /> :<Results 
-        results={result}
+        results={result} handle={handle}
         />}
-        </Main>
     </>
   );
 }

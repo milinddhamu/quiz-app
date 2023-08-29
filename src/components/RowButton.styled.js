@@ -13,8 +13,6 @@ const applyAlignmentAndJustification = (align, justify) => {
     case "center":
       css += "align-items: center;";
       break;
-    // You can add more cases for other alignment values if needed
-
     default:
       break;
   }
@@ -32,8 +30,6 @@ const applyAlignmentAndJustification = (align, justify) => {
     case "between":
       css += "justify-content: space-between;";
       break;
-    // You can add more cases for other justification values if needed
-
     default:
       break;
   }

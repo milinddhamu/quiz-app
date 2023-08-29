@@ -1,7 +1,6 @@
 import Button from '@/components/Button.styled';
 import { Main } from '@/components/Main.styled';
 import { Section } from '@/components/Section.styled';
-import { useRouter } from "next/router";
 import { H1,P,H4,H3,H5 } from "@/components/Text.styled";
 import {Card, CardContent} from "@/components/Card.styled";
 import {Row, Col} from "@/components/Row.styled";
@@ -32,13 +31,13 @@ const QuizCard = ({quiz , page ,submit , next}) => {
     <>
     <Section $align="center">
     <Card $gap={0.6}>
-                <H4 key={quiz.id}>{quiz.question || "some question data here..."}</H4>
+                <H4>{quiz.question || "some question data here..."}</H4>
     <CardContent>
                 {answers && Object.keys(answers).map((key,index) =>
                 { if(answers[key] === null) return;
                   return(
                     <>
-                    {key && <RowButton $backgroundStyle={!checkedStates[key] ? `background1` : `background2`} $justify="start" $align="center" key={index} onClick={() => handleClick(key)}>
+                    {key && <RowButton $backgroundStyle={!checkedStates[key] ? `background1` : `background2`} $justify="start" $align="center" key={`options: ${index}`} onClick={() => handleClick(key)}>
                     <RadioInput type="checkbox" id={key} name="options" value={key}  
                       checked={checkedStates[key] || false}
                       onChange={()=>{}}
