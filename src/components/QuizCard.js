@@ -19,11 +19,14 @@ const QuizCard = ({quiz , page ,submit , next}) => {
   };
   const ans = Object.keys(checkedStates).filter(key => checkedStates[key] === true).join("");
 
-  const handleSubmitNext = () => {
-    if(!ans.length) return;
-    submit(key,ans);
-    next();
-    setCheckedStates({});
+  const handleSubmitNext = async () => {
+    try {
+      submit(key, ans);
+      setCheckedStates({});
+      await next();
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
 

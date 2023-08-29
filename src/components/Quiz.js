@@ -16,26 +16,11 @@ const Quiz = ({handle}) => {
     const questions = useRecoilValue(quizState);
     const [page , setPage] = useState(0);
     const [resultState , setResultState] = useState(false)
-    const [result, setResult] = useState({
-      correct: 0,
-      incorrect: 0,
-      total: 0
-    });
-    const [resultData , setResultData] = useState({});
+    
     const [userAnswers, setUserAnswers] = useState([{
-      "key" : "",
-      "ans":[],
+      "key" : Number,
+      "ans": String,
     }]);
-    const quiz = questions[page];
-    const nextQues = () => {
-      if (page < questions.length - 1) {
-        setPage(prevIndex => prevIndex + 1);
-      } else {
-        handleResult();
-        setResultState(true);
-      }
-    };
-
     const handleSubmit = (key,ans) => {
       setUserAnswers((prev)=>[
         ...prev,
@@ -43,40 +28,20 @@ const Quiz = ({handle}) => {
           "ans": ans }
       ]);
     };
-    
-    const generateResult = () => {
-      const results = userAnswers.map(userAnswer => {
-        const { key, ans } = userAnswer;
-        const question = questions.find(q => q.id === key);
-    
-        if (!question) {
-          return null;
-        }
-    
-        const isCorrect = question.correct_answer === ans;
-        return { id: key, isCorrect };
-      });
-      
-      return results;
+    const nextQues = async () => {
+      if ( page < questions.length -1) {
+        setPage(prevIndex => prevIndex + 1);
+      } else {
+        setResultState(true);
+      }
     };
-
-    const handleResult = () => {
-      const result = generateResult();
-      const correct = result.filter(answer => answer && answer.isCorrect).length;
-      const incorrect = result.filter(answer => answer && !answer.isCorrect).length;
-      const total = result.length;
-      setResult({
-        correct,
-        incorrect,
-        total
-      });
-    };
+    const quiz = questions[page];
     
   return (
     <>
         {!resultState ?
-        <QuizCard quiz={quiz} page={page} submit={handleSubmit} next={nextQues} result={result} /> :<Results 
-        results={result} handle={handle}
+        <QuizCard quiz={quiz} page={page} submit={handleSubmit} next={nextQues} /> :<Results 
+        user={userAnswers} questions={questions} handle={handle}
         />}
     </>
   );

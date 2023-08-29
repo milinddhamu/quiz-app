@@ -8,7 +8,43 @@ import { RowButton } from "./RowButton.styled";
 import { useState,useEffect } from 'react';
 import Button from '@/components/Button.styled';
 
-const Results = ({results,handle}) => {
+const Results = ({handle,user,questions}) => {
+  const [result, setResult] = useState({
+    correct: 0,
+    incorrect: 0,
+    total: 0
+  });
+
+  const generateResult = () => {
+    const results = user?.map(userAnswer => {
+      const { key, ans } = userAnswer;
+      const question = questions?.find(q => q.id === key);
+      if (!question) {
+        return null;
+      }
+      const isCorrect = question?.correct_answer === ans;
+      return { id: key, isCorrect:isCorrect };
+    });
+    
+    return results;
+
+  };
+  const handleResult = () => {
+    const totalResult = generateResult(user)
+    const correct = totalResult?.filter(answer => answer && answer.isCorrect).length;
+    const incorrect = totalResult?.filter(answer => answer && !answer.isCorrect).length;
+    const total = totalResult?.length - 1;
+    setResult({
+      correct,
+      incorrect,
+      total
+    });
+  };
+  useEffect(()=>{
+    handleResult();
+  },[user])
+  
+  
   return (
     <>
     <Section $align="center">
@@ -23,7 +59,7 @@ const Results = ({results,handle}) => {
                       checked={true}
                       onChange={()=>{}}
                     />
-                    <H5>{results.correct}</H5>
+                    <H5>{result?.correct}</H5>
                       <H5 $gray>
                       {"Correct"}
                     </H5>
@@ -34,7 +70,7 @@ const Results = ({results,handle}) => {
                       checked={true}
                       onChange={()=>{}}
                     />
-                    <H5>{results.incorrect}</H5>
+                    <H5>{result?.incorrect}</H5>
                       <H5 $gray>
                       {"Incorrect"}
                     </H5>
