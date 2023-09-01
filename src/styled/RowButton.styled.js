@@ -53,14 +53,14 @@ const applyBackgroundStyles = (backgroundType) => {
         border-radius: 0.8rem;
         border: 2px solid green;
       `;
-      case "background3":
+    case "background3":
       return `
         background-color: #E9F7F0;
         padding: 0.8rem 0;
         border-radius: 0.8rem;
         border: none;
       `;
-      case "background4":
+    case "background4":
       return `
         background-color: #FFE8E9;
         padding: 0.8rem 0;
@@ -68,8 +68,8 @@ const applyBackgroundStyles = (backgroundType) => {
         border: none;
       `;
 
-      }
-     }
+  }
+}
 
 export const RowButton = styled.button`
   display:flex;

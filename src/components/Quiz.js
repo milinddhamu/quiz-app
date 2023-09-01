@@ -1,48 +1,43 @@
 import { useRecoilValue } from "recoil";
 import { quizState } from "../../store/atoms";
-import { useState,useEffect } from "react";
-import Button from '@/components/Button.styled';
-import { Main } from '@/components/Main.styled';
-import { Section } from '@/components/Section.styled';
-import { H1,P,H4,H3,H5 } from "@/components/Text.styled";
-import {Card, CardContent} from "@/components/Card.styled";
-import {Row, Col} from "@/components/Row.styled";
-import RadioInput from "./RadioInput.styled";
+import { useState } from "react";
 import QuizCard from "./QuizCard";
-import { Footer } from "./Footer.styled";
 import Results from "./Results";
 
-const Quiz = ({handle}) => {
-    const questions = useRecoilValue(quizState);
-    const [page , setPage] = useState(0);
-    const [resultState , setResultState] = useState(false);
-    const [userAnswers, setUserAnswers] = useState([{
-      "key" : Number,
-      "ans": String,
-      "time":0,
-    }]);
-    const handleSubmit = (key,ans,quesTime) => {
-      setUserAnswers((prev)=>[
-        ...prev,
-        { "key" : key,
-          "ans": ans,
-        "time":quesTime }
-      ]);
-    };
-    const nextQues = async () => {
-      if ( page < questions.length -1) {
-        setPage(prevIndex => prevIndex + 1);
-      } else {
-        setResultState(true);
+const Quiz = ({ handle }) => {
+  const questions = useRecoilValue(quizState); // questions data (array of objects)
+  const [page, setPage] = useState(0); // creating a counter to update questions
+  const [resultState, setResultState] = useState(false); // state for showing result
+  const [userAnswers, setUserAnswers] = useState([{
+    "key": Number,
+    "ans": String,
+    "time": 0,
+  }]); // state for user submission of question (we can store array if have multiple choice)
+  const handleSubmit = (key, ans, quesTime) => {
+    setUserAnswers((prev) => [
+      ...prev,
+      {
+        "key": key,
+        "ans": ans,
+        "time": quesTime
       }
-    };
-    const quiz = questions[page];
+    ]);
+  }; // function to set state for user submissions
+  const nextQues = async () => {
+    if (page < questions.length - 1) {
+      setPage(prevIndex => prevIndex + 1);
+    } else {
+      setResultState(true);
+    }
+  }; // incrementing page counter
+  const quiz = questions[page]; // referencing to question object in questions array 
   return (
     <>
-        {!resultState ?
-        <QuizCard quiz={quiz} page={page} submit={handleSubmit} next={nextQues} /> :<Results 
-        user={userAnswers} questions={questions} handle={handle}
-        />}
+      {!resultState ?
+        <QuizCard quiz={quiz} page={page} submit={handleSubmit} next={nextQues} /> // quiz card
+        : 
+        <Results user={userAnswers} questions={questions} handle={handle}/> // results after last submission
+        }
     </>
   );
 }

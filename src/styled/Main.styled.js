@@ -11,7 +11,7 @@ const bodyBackground = (bg) => {
     default:
       return
   }
-}
+};
 
 export const Main = styled.main`
   display: flex;
