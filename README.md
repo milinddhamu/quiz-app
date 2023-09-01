@@ -95,7 +95,7 @@ The project structure is organized as follows:
 
 ## API Integration
 
-The app integrates with the "https://quizapi.io/" API using the provided API key. API requests are made to start a quiz, retrieve questions, submit user responses, and finish the quiz. The API integration logic is implemented in the `utils/api.js` file.
+The app integrates with the "https://quizapi.io/" API using the provided API key. API requests are made to start a quiz, retrieve questions, submit user responses, and finish the quiz. The API integration logic is implemented in the `index` file in the pages router. (environment variables were having some issue so api key is used as plain text)
 
 ## Conclusion
 
