@@ -53,9 +53,10 @@ export default function Home() {
           alt="logo" 
           css={{maxWidth:"30%",height:"auto",padding:"0rem 1rem 0 0"}}
           />
+          <Center>
             <Button style={{fontFamily:"Poppins, sans-serif"}} $Disabled={true} $shadow $extraBold $paddingX="4rem" $paddingY="4rem" $square $size={46} $radius="full" >
             Quiz
-</Button>
+</Button></Center>
           <Footer>
       {!buttonState ? <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={fetchData}>Start</Button> :
       <Button $paddingX="6rem" $Bold $Disabled={true} $paddingY="1.5rem" $size={18} $radius="full" color="disabled" >Loading...</Button>
