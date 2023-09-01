@@ -12,12 +12,11 @@ export const H2 = styled.p`
   font-family: 'Nunito', sans-serif;
   font-weight:800;
   width:auto;
-  font-size:24px;
+  font-size:40px;
   text-align:justify;
 `
 export const H3 = styled.p`
   color: #FB2576;
-  box-shadow: 
   font-family: 'Nunito', sans-serif;
   font-weight:600;
   width:auto;

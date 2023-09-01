@@ -14,12 +14,13 @@ import { ImageWrapper } from "@/components/LogoWrapper.styled";
 import BrandLogo from "/public/upraised.png"
 import { Footer } from "@/components/Footer.styled";
 import { Center } from './../components/Center.styled';
+import CircularProgressBar from '../components/CircularProgressBar';
 
 export default function Home() {
   const setQuizState = useSetRecoilState(quizState);
-  const questions = useRecoilValue(quizState)
+  const questions = useRecoilValue(quizState);
   const [loading , setLoading] = useState(false);
-  const [buttonState , setButtonState] = useState(false)
+  const [buttonState , setButtonState] = useState(false);
   const fetchData = async () => {
     setButtonState(true);
     try {
@@ -37,18 +38,24 @@ export default function Home() {
       setButtonState(false);
     }
   };
-  const handleStartAgain = () => setLoading(false);
+  const handleStartAgain = () => {
+    setLoading(false);
+    setButtonState(true);
+    fetchData();
+  }
   return (
     <>
-    <Main>
+    <Main >
     {!(loading && questions) ?
-      <Section $gap={2} $justify="between" $align="center" $Relative >
+      <Section $gap={2} $justify="between" $align="center" style={{minHeight:"100dvh"}} >
           <Image 
           src={BrandLogo}
           alt="logo" 
-          css={{maxWidth:"30%",height:"auto",padding:"1rem 1rem 0 0"}}
+          css={{maxWidth:"30%",height:"auto",padding:"0rem 1rem 0 0"}}
           />
-          <Center><Button style={{fontFamily:"Poppins, sans-serif"}} $Disabled={true} $shadow $extraBold $paddingX="4rem" $paddingY="4rem" $square $size={46} $radius="full" > Quiz</Button></Center>
+            <Button style={{fontFamily:"Poppins, sans-serif"}} $Disabled={true} $shadow $extraBold $paddingX="4rem" $paddingY="4rem" $square $size={46} $radius="full" >
+            Quiz
+</Button>
           <Footer>
       {!buttonState ? <Button $paddingX="6rem" $Bold $paddingY="1.5rem" $size={18} $radius="full" color="secondary" onClick={fetchData}>Start</Button> :
       <Button $paddingX="6rem" $Bold $Disabled={true} $paddingY="1.5rem" $size={18} $radius="full" color="disabled" >Loading...</Button>

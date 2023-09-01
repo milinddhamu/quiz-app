@@ -25,8 +25,8 @@ const errorStyles = `
   color: white;
 `;
 const warningStyles = `
-  background-color: #F5A524;
-  color: white;
+  background-color: #ffffff;
+  color: black;
 `;
 const disabledStyles = `
   background-color: #52525b;

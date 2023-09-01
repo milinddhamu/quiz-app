@@ -44,9 +44,11 @@ const applyAlignmentAndJustification = (align, justify) => {
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   ${props=> props.$Relative && `position:relative;`}
   ${props => applyAlignmentAndJustification(props.$align, props.$justify)}
   width: min(100%, 768px);
-  height: 100vh;
+  height: 100%;
+  padding:1rem 0;
   gap: ${a=>a.$gap || 4}rem;
 `;

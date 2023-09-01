@@ -15,17 +15,18 @@ import Results from "./Results";
 const Quiz = ({handle}) => {
     const questions = useRecoilValue(quizState);
     const [page , setPage] = useState(0);
-    const [resultState , setResultState] = useState(false)
-    
+    const [resultState , setResultState] = useState(false);
     const [userAnswers, setUserAnswers] = useState([{
       "key" : Number,
       "ans": String,
+      "time":0,
     }]);
-    const handleSubmit = (key,ans) => {
+    const handleSubmit = (key,ans,quesTime) => {
       setUserAnswers((prev)=>[
         ...prev,
         { "key" : key,
-          "ans": ans }
+          "ans": ans,
+        "time":quesTime }
       ]);
     };
     const nextQues = async () => {
@@ -36,7 +37,6 @@ const Quiz = ({handle}) => {
       }
     };
     const quiz = questions[page];
-    
   return (
     <>
         {!resultState ?
