@@ -67,8 +67,8 @@ const Results = ({ handle, user, questions }) => {
             <P style={{ fontSize: "30px", fontWeight: "800" }}>Your result</P>
 
             {/* Progress bar to show result in percentage*/}
-            <CircularProgressBar percentage={resultPercent} circleWidth={250} stroke={20} />
-            <P style={{ fontSize: "20px", fontWeight: "600" }}>{"Total time taken - "}<TotalTimeSpent /></P>
+            <CircularProgressBar percentage={resultPercent} circleWidth={250} stroke={30} $fontsize={35} $fontweight={900} />
+            <P style={{ fontSize: "20px", fontWeight: "700" }}>{"Total time taken - "}<TotalTimeSpent /></P>
 
             {/* Needed a fix here */}
             {/* Correct Options box to show correct answers , while reusing radio input*/}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container,ProgressCircle,ProgressSvg , BackgroundCircle , ProgressCircleBackground , CenteredText } from '../styled/Progress.styled';
 
-const CircularProgressBar = ({ percentage, circleWidth ,index , total, stroke}) => {
+const CircularProgressBar = ({ percentage, circleWidth ,index , total, stroke , $fontsize, $fontweight }) => {
   const r = circleWidth /2.5;
   const adjWidth = circleWidth + stroke * 2;
   const bgRadius = r + stroke*1.5; 
@@ -25,7 +25,7 @@ const CircularProgressBar = ({ percentage, circleWidth ,index , total, stroke}) 
       <ProgressCircle $adjWidth={adjWidth} $r={r} $stroke={stroke} $dashArray={dashArray} $dashOffset={dashOffset}/>
 
       {/* Text inside progress */}
-      <CenteredText x="50%" y="50%">
+      <CenteredText x="50%" y="50%" $fontSize={$fontsize} $fontWeight={$fontweight}>
         {(index && total) ? 
           `${index}/${total}` :`${percentage}%` }
         </CenteredText>
