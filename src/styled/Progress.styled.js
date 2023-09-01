@@ -48,8 +48,8 @@ export const ProgressCircle = styled.circle`
   `;
 
 export const CenteredText = styled.text`
-    font-size: 20px;
-    
+    font-size: ${props => props.$fontSize || 20}px;
+    font-weight: ${props => props.$fontWeight || 600};
     color: #111111;
 
     dominant-baseline: middle;
