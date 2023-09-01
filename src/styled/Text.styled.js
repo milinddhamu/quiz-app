@@ -5,7 +5,6 @@ export const H1 = styled.p`
   font-family: 'Nunito', sans-serif;
   font-weight:900;
   font-size:40px;
-
 `
 export const H2 = styled.p`
   color: #111111;

@@ -1,9 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Center } from './Center.styled';
-import { H3, P } from './Text.styled';
-import { H2 } from '@/components/Text.styled';
-import { Container,ProgressCircle,ProgressSvg , BackgroundCircle , ProgressCircleBackground , CenteredText } from './Progress.styled';
+import { Container,ProgressCircle,ProgressSvg , BackgroundCircle , ProgressCircleBackground , CenteredText } from '../styled/Progress.styled';
 
 const CircularProgressBar = ({ percentage, circleWidth ,index , total, stroke}) => {
   const r = circleWidth /2.5;
@@ -15,15 +11,27 @@ const CircularProgressBar = ({ percentage, circleWidth ,index , total, stroke}) 
   
   return (
     <Container $adjWidth={adjWidth}>
+    
+    {/* Circular wrapper for progress */}
+
     <ProgressSvg viewBox={`0 0 ${adjWidth} ${adjWidth}`} $adjWidth={adjWidth}>
+    {/* Background of circular progress component with padding */}
       <BackgroundCircle  $adjWidth={adjWidth} $r={bgRadius}/>
+      
+      {/* Background of progress bar   */}
       <ProgressCircleBackground $adjWidth={adjWidth} $r={r} $stroke={stroke} />
+
+      {/* Progress bar */}
       <ProgressCircle $adjWidth={adjWidth} $r={r} $stroke={stroke} $dashArray={dashArray} $dashOffset={dashOffset}/>
+
+      {/* Text inside progress */}
       <CenteredText x="50%" y="50%">
         {(index && total) ? 
           `${index}/${total}` :`${percentage}%` }
         </CenteredText>
+
     </ProgressSvg>
+
     </Container>
     
   );

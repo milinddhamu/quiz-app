@@ -48,7 +48,7 @@ export const Card = styled.div`
   padding:0.8rem 1.8rem 1.8rem 1.8rem;
   margin:5rem 0rem 0rem 0rem;
   background-color:#ffffff;
-  gap:${a=>a.$gap || 1}em;
+  gap:${a => a.$gap || 1}em;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
@@ -58,7 +58,7 @@ export const CardContent = styled.div`
   flex: 1;
   display:flex;
   flex-direction:column;
-  gap:${a=>a.$gap || 0.4}em;
+  gap:${a => a.$gap || 0.4}em;
   padding:0rem 0rem 10rem 0rem;
   ${props => applyAlignmentAndJustification(props.$align, props.$justify)}
 

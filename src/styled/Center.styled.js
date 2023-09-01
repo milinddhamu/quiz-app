@@ -6,5 +6,4 @@ export const Center = styled.div`
   place-items:center;
   bottom:0rem;
   height:100%;
-
 `
