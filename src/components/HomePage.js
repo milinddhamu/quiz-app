@@ -1,4 +1,3 @@
-import BrandLogo from "/public/upraised.png"
 import { Section } from "@/styled/Section.styled";
 import { Center } from "@/styled/Center.styled";
 import { Footer } from "@/styled/Footer.styled";
@@ -10,7 +9,7 @@ const HomePage = ({ buttonState , fetchData }) => {
     <>
     <Section $gap={2} $justify="between" $align="center" style={{ minHeight: "100vh" }}>
             <Image
-              src={BrandLogo}
+              src=""
               alt="logo"
               css={{ maxWidth: "30%", height: "auto", padding: "0rem 1rem 0 0" }}
             />
