@@ -4,6 +4,11 @@
 
 This documentation provides an overview of the Quiz web app project developed using Next.js, React, and styled-components. The app allows users to take a quiz, answer questions, view their score, and restart the quiz. The app uses the quiz questions and related data from the "https://quizapi.io/" API using a provided API key.
 
+## Screenshots
+![Home](https://user-images.githubusercontent.com/68379239/270403855-9c710549-1b61-4e2d-9cc2-977c130b4c5c.png)
+![Quiz component](https://user-images.githubusercontent.com/68379239/270403870-156e354d-76aa-4798-beb0-81d0e63488c1.png)
+![Result](https://user-images.githubusercontent.com/68379239/270403877-2164a2d7-7e15-4c90-adbe-a86db95caabd.png)
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
