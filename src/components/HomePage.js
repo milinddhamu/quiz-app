@@ -3,15 +3,16 @@ import { Center } from "@/styled/Center.styled";
 import { Footer } from "@/styled/Footer.styled";
 import Button from "@/styled/Button.styled";
 import Image from "next/image";
+import QuizLogo from "/public/quiz-logo.png"
 
 const HomePage = ({ buttonState , fetchData }) => {
   return (
     <>
     <Section $gap={2} $justify="between" $align="center" style={{ minHeight: "100vh" }}>
             <Image
-              src=""
+              src={QuizLogo}
               alt="logo"
-              css={{ maxWidth: "30%", height: "auto", padding: "0rem 1rem 0 0" }}
+              css={{ maxWidth: "30%", height: "auto", padding: "0rem 1rem 0 0", filter: "hue-rotate(300deg)" }}
             />
             <Center>
               <Button
