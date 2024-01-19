@@ -10,14 +10,9 @@ import Button from '@/styled/Button.styled';
 import CircularProgressBar from './CircularProgressBar';
 
 const Results = ({ handle, user, questions }) => {
-  const [result, setResult] = useState({
-    correct: 0, // correct answers
-    incorrect: 0, // incorrect answers
-    total: 0, // total questions
-    totalTime: 0 // total time
-  });
+  const [result] = useState(() => handleResult());
   // result generator
-  const generateResult = () => {
+  function generateResult(){
     const results = user?.map(userAnswer => {
       const { key, ans } = userAnswer;
       const question = questions?.find(q => q.id === key);
@@ -40,24 +35,21 @@ const Results = ({ handle, user, questions }) => {
   }
 
   // Result function to generate result as per result page
-  const handleResult = () => {
+  function handleResult(){
     const totalResult = generateResult(user);
     const totalTime = user.reduce((acc, item) => acc += item.time, 0);
     const correct = totalResult?.filter(answer => answer && answer.isCorrect).length;
     const incorrect = totalResult?.filter(answer => answer && !answer.isCorrect).length;
     const total = totalResult?.length - 1;
-    setResult({
-      correct,
-      incorrect,
-      total,
-      totalTime
-    }); // setting state for result
+    return {
+      correct:correct,
+      incorrect:incorrect,
+      total:total,
+      totalTime:totalTime
+    }; // setting state for result
   };
-  useEffect(() => {
-    handleResult(); // Result calculated when page loads
-  }, [user]);
 
-  const resultPercent = (result.correct / result.total) * 100;
+  const resultPercent = ((result?.correct / result?.total) * 100).toFixed(2) ;
 
   return (
     <>
@@ -66,36 +58,36 @@ const Results = ({ handle, user, questions }) => {
           <CardContent $gap={2} $align="center">
             <P style={{ fontSize: "30px", fontWeight: "800" }}>Your result</P>
 
-            {/* Progress bar to show result in percentage*/}
-            <CircularProgressBar percentage={resultPercent} circleWidth={250} stroke={30} $fontsize={35} $fontweight={900} />
-            <P style={{ fontSize: "20px", fontWeight: "700" }}>{"Total time taken - "}<TotalTimeSpent /></P>
+              {/* Progress bar to show result in percentage*/}
+              <CircularProgressBar percentage={resultPercent} circleWidth={250} stroke={30} $fontsize={35} $fontweight={900} />
+              <P style={{ fontSize: "20px", fontWeight: "700" }}>{"Total time taken - "}<TotalTimeSpent /></P>
 
-            {/* Needed a fix here */}
-            {/* Correct Options box to show correct answers , while reusing radio input*/}
-            <RowButton $Disabled={true} $backgroundStyle="background3" $justify="start" $align="center" >
-              <RadioInput type="checkbox" name="options"
-                $correct
-                checked={true}
-                onChange={() => { }}
-              />
-              <H5>{result?.correct}</H5>
-              <H5 $gray>
-                {"Correct"}
-              </H5>
-            </RowButton>
+              {/* Needed a fix here */}
+              {/* Correct Options box to show correct answers , while reusing radio input*/}
+              <RowButton $Disabled={true} $backgroundStyle="background3" $justify="start" $align="center" >
+                <RadioInput type="checkbox" name="options"
+                  $correct
+                  checked={true}
+                  onChange={() => { }}
+                />
+                <H5>{result?.correct}</H5>
+                <H5 $gray>
+                  {"Correct"}
+                </H5>
+              </RowButton>
 
-            {/* Incorrect Options box to show incorrect answers , while reusing radio input*/}
-            <RowButton $Disabled={true} $backgroundStyle="background4" $justify="start" $align="center" >
-              <RadioInput type="checkbox" name="options"
-                $incorrect
-                checked={true}
-                onChange={() => { }}
-              />
-              <H5>{result?.incorrect}</H5>
-              <H5 $gray>
-                {"Incorrect"}
-              </H5>
-            </RowButton>
+              {/* Incorrect Options box to show incorrect answers , while reusing radio input*/}
+              <RowButton $Disabled={true} $backgroundStyle="background4" $justify="start" $align="center" >
+                <RadioInput type="checkbox" name="options"
+                  $incorrect
+                  checked={true}
+                  onChange={() => { }}
+                />
+                <H5>{result?.incorrect}</H5>
+                <H5 $gray>
+                  {"Incorrect"}
+                </H5>
+              </RowButton>
           </CardContent>
         </Card>
 

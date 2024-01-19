@@ -12,7 +12,6 @@ export default function Home() {
   const questions = useRecoilValue(quizState); // referencing quizState data (array of objects)
   const [loading, setLoading] = useState(false);
   const [buttonState, setButtonState] = useState(false);
-
   // Function to fetch quiz questions from the API client side
   const fetchData = async () => {
     setButtonState(true);
