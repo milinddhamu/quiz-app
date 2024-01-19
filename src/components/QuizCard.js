@@ -12,14 +12,19 @@ import CircularProgressBar from './CircularProgressBar';
 const QuizCard = ({ quiz, page, submit, next }) => {
   const answers = quiz?.answers; // referencing answer/answers inside question object called as quiz
   const key = quiz?.id;
+
   const [checkedStates, setCheckedStates] = useState({}); // state for storing options input
+  
   const [timer, setTimer] = useState(0); // timer counter
+  
   const handleClick = (key) => {
     setCheckedStates((prevCheckedStates) => ({
       [key]: !prevCheckedStates[key]
     }));
   }; // setter function to store state as per key with boolean true or false
+  
   const ans = Object.keys(checkedStates).filter(key => checkedStates[key] === true).join(""); // getting option values as per key if they are true
+  
   const handleSubmitNext = async () => {
     try {
       submit(key, ans, timer); // setting user submission state in Quiz component
@@ -29,6 +34,7 @@ const QuizCard = ({ quiz, page, submit, next }) => {
       console.error("An error occurred:", error);
     }
   };
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer(prevTimer => prevTimer + 1);
@@ -39,6 +45,7 @@ const QuizCard = ({ quiz, page, submit, next }) => {
     };
   }, []);
 
+  {/* Variables for time formatting */}
   const minutes = Math.floor(timer / 60);
   const seconds = timer % 60;
   const formattedTime = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -86,7 +93,9 @@ const QuizCard = ({ quiz, page, submit, next }) => {
             })}
           </CardContent>
         </Card>
-        <Footer $backgroundColor> {/* Footer Button */}
+
+        {/* Footer Button */}
+        <Footer $backgroundColor> 
           <Row $justify="end" >
             <Button $paddingX="6rem" $Bold $Disabled={!(ans) ? true : false} $paddingY="1.5rem" $size={18} $radius="full" color={(ans?.length) ? `secondary` : `disabled`} onClick={handleSubmitNext}>{(page === 9) ? "Submit & Finish" : "Submit & Next"}</Button>
           </Row>
@@ -96,6 +105,7 @@ const QuizCard = ({ quiz, page, submit, next }) => {
         <div style={{ position: "absolute", top: "6rem" }}>
           <CircularProgressBar percentage={(page + 1) / 10 * 100} circleWidth={150} index={page + 1} total={10} stroke={10} />
         </div>
+
       </Section>
     </>
   );
