@@ -93,7 +93,7 @@ const QuizCard = ({ quiz, page, submit, next }) => {
         </Footer>
 
         {/* Progress bar for questions */}
-        <div style={{ position: "absolute", top: "1rem" }}>
+        <div style={{ position: "absolute", top: "6rem" }}>
           <CircularProgressBar percentage={(page + 1) / 10 * 100} circleWidth={150} index={page + 1} total={10} stroke={10} />
         </div>
       </Section>

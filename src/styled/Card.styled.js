@@ -46,7 +46,7 @@ export const Card = styled.div`
   object-fit:contain;
   border-radius:2em;
   padding:0.8rem 1.8rem 1.8rem 1.8rem;
-  margin:5rem 0rem 0rem 0rem;
+  margin:10rem 0rem 0rem 0rem;
   background-color:#ffffff;
   gap:${a => a.$gap || 1}em;
   transition-property: all;
