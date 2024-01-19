@@ -32,7 +32,7 @@ const Quiz = ({ handle }) => {
   }; // incrementing page counter
   const quiz = questions[page]; 
   if(!quiz) return (
-    <div className="flex h-screen w-full justify-center items-center">
+    <div className="flex h-screen w-full justify-center items-center italic">
       Questions are not available this time!
     </div>
   ) // referencing to question object in questions array 
