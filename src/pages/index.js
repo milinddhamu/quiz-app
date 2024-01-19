@@ -5,7 +5,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { quizState } from "../../store/atoms";
 import Quiz from "../components/Quiz";
 import HomePage from "@/components/HomePage";
-
+import Head from 'next/head';
 
 export default function Home() {
   const setQuizState = useSetRecoilState(quizState); // setter function for quizState
@@ -40,6 +40,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Quizzer</title>
+      </Head>
       <Main>
         {!loading || !questions ? (
           // Home page where we can start quiz
