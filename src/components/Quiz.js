@@ -30,7 +30,12 @@ const Quiz = ({ handle }) => {
       setResultState(true);
     }
   }; // incrementing page counter
-  const quiz = questions[page]; // referencing to question object in questions array 
+  const quiz = questions[page]; 
+  if(!quiz) return (
+    <div className="flex h-screen w-full justify-center items-center">
+      Questions are not available this time!
+    </div>
+  ) // referencing to question object in questions array 
   return (
     <>
       {!resultState ?

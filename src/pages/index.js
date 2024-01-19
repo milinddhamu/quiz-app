@@ -19,7 +19,7 @@ export default function Home() {
     try {
       const response = await axios.get('https://quizapi.io/api/v1/questions', {
         params: {
-          apiKey: process.env.QUIZ_KEY, //API Key //process.env have some issue here
+          apiKey: process.env.NEXT_PUBLIC_QUIZ_KEY, //API Key //process.env have some issue here
           limit: 10, // can add more features like tags, categories
         }
       });
